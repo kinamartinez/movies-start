@@ -2,6 +2,9 @@ body{
   margin: 0;   
 }
 
+.white{
+  color: white;
+}
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 .loading-icon{

@@ -1,4 +1,3 @@
-/
 <!DOCTYPE html>
 <html lang="en" ng-app="movieLibrary">
 
@@ -14,41 +13,32 @@
 </head>
 
 <body>
-    <div class="app-container" ng-cloak>
-        <div ng-controller="MoviesCtrl">
-            <div class="movies-header-toolbar">
-                <div class="movies-edit-panel">
-                    <button type="button" class="btn glyphicon glyphicon-plus" ng-click="addMovie()"></button>
-                    <button ng-show="!isDeleting" type="button" class="btn glyphicon glyphicon-trash" ng-click="deleteMovies()"></button>
-                    <button ng-hide="!isDeleting" type="button" class="btn done-button" ng-click="doneDeleteMovies()">Done</button>
-                </div>
-            </div>
-            <div class="movies-container">
-                <li class="movie-container" ng-repeat="movie in movies track by $index">
-                    <div class="movie-item" ng-click="onMovieClicked()">
-                        <div class="movie-image-container">
-                            <img class="movie-image" ng-src="{{movie.posterImage}}" alt="film image" ng-click="deleteMovie()" />
-                            <div ng-show="isDeleting" class="movie-delete-icon glyphicon glyphicon-minus-sign delete-icon" />
-                        </div>
-                        <div class="movie-name">{{movie.name | uppercase}}</div>
-                        <div class="movie-sub-info">
-                            <div class="movie-year">{{movie.year}}</div>
-                            <div class="movie-resolutions">
-                                <span ng-repeat="res in movie.supportedResolution track by $index">{{res}}p</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+<div class="app-container" ng-cloak>
+    <div ng-controller="MoviesCtrl">
+        <div class="movies-header-toolbar">
+            <div class="movies-edit-panel">
+                <button type="button" class="btn glyphicon glyphicon-plus" ng-click="addMovie()"></button>
+                <button type="button" class="btn glyphicon glyphicon-trash" ng-click="clickGarbage()"></button>
+                <button ng-hide="!isDeleting" type="button" class="btn done-button">Click on a movie to delete it from
+                    your list! Click the garbage again when you are done!
+                </button>
             </div>
         </div>
+        <div class="movies-container" >
+
+            <dir class="movie-container" ng-repeat="movie in movies track by $index"
+                 movie-directive movie-dir="movie" my-one-way-bind="deleteMovie($index)">
+
+            </dir>
+        </div>
     </div>
-    </div>
-    </div>
-    <!--load scripts-->
-    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
-    <script type="text/javascript" src="app/app.js"></script>
-    <script type="text/javascript" src="app/movies/moviesService.js"></script>
-    <script type="text/javascript" src="app/movies/moviesCtrl.js"></script>
+</div>
+
+<!--load scripts-->
+<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/movies/moviesService.js"></script>
+<script type="text/javascript" src="app/movies/moviesCtrl.js"></script>
 </body>
 
 </html>

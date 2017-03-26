@@ -7,7 +7,8 @@ app.factory('movies', [function() {
     posterImage: "https://upload.wikimedia.org/wikipedia/en/c/c3/Inglourious_Basterds_poster.jpg",
     shortDescription: "The film tells the fictional alternate history story of two plots to assassinate Nazi Germany's political leadership.",
     isBlockbuster: true
-  }, {
+  },
+      {
     id: 1,
     name: "braveheart",
     year: 1995,
@@ -22,12 +23,13 @@ app.factory('movies', [function() {
     supportedResolution: [480, 720,1080],
     posterImage: "https://upload.wikimedia.org/wikipedia/en/1/1c/WhenHarryMetSallyPoster.jpg",
     shortDescription: "The story follows the title characters from the time they meet just before sharing a cross-country drive, through twelve years or so of chance encounters in New York City.",
-    isBlockbuster: false   
-  }];
+    isBlockbuster: false
+  }
+  ];
   
   var getMovies = function(){
     return movies;
-  }
+  };
 
   var removeMovie = function (index) {
     movies.splice(index, 1);
@@ -35,6 +37,7 @@ app.factory('movies', [function() {
   
   return {
     getMovies: getMovies,
-    removeMovie: removeMovie
+    removeMovie: removeMovie,
+    movies: movies
   } 
 }]);
